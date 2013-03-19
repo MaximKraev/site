@@ -41,5 +41,4 @@ Once you have made your changes, simply commit them and push them up to the remo
 
 Gimme a shout at jmoss@codio.com or on Skype at joelmoss.info.
 
-### Test Commit ###
-Maximka
+
