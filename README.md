@@ -20,7 +20,13 @@ We encourage you to send us pull requests for anything that you think may fix or
 
 
 ### Requirements ###
-
+asdasd
+ad
+a
+sd
+asd
+as
+d
 This repository is hosted on Github as a Git repo at [https://github.com/codio/site](https://github.com/codio/site). You will therefore need to install Git so you can check out the code and run it locally.
 
 You will also need the latest version of Ruby 1.9.3, along with RubyGems and Bundler.
