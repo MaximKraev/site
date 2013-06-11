@@ -5,149 +5,511 @@
   <id>https://codio.com/s/blog</id>
   <link href="https://codio.com/s/blog"/>
   <link href="https://codio.com/s/blog/feed.xml" rel="self"/>
-  <updated>2013-03-15T00:00:00Z</updated>
+  <updated>2013-06-10T00:00:00Z</updated>
   <author>
     <name>Codio</name>
   </author>
   <entry>
-    <title>We're Hiring Frontend Engineers</title>
-    <link rel="alternate" href="https://codio.com/s/blog/2013/03/we-are-hiring-engineers/"/>
-    <id>https://codio.com/s/blog/2013/03/we-are-hiring-engineers/</id>
-    <published>2013-03-15T00:00:00Z</published>
-    <updated>2013-03-15T00:00:00Z</updated>
+    <title>The Journey from Mercurial to Git</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/06/journey/"/>
+    <id>https://codio.com/s/blog/2013/06/journey/</id>
+    <published>2013-06-10T00:00:00Z</published>
+    <updated>2013-06-10T00:00:00Z</updated>
     <author>
-      <name>Joel Moss</name>
+      <name>Friedel Ziegelmayer</name>
     </author>
-    <summary type="html">&lt;p&gt;Now we have the &lt;a href="/s/blog/2013/03/codio-is-live-and-kicking/"&gt;beta out the door&lt;/a&gt;, it's time to concentrate on the future of Codio and working towards that perfect IDE. But we need some additional help from an experienced front-end engineer who want to be part of something truly exciting.&lt;/p&gt;
+    <summary type="html">&lt;h2 id="toc_0"&gt;The Problem&lt;/h2&gt;
 
-&lt;p&gt;As one...&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;Now we have the &lt;a href="/s/blog/2013/03/codio-is-live-and-kicking/"&gt;beta out the door&lt;/a&gt;, it&amp;#39;s time to concentrate on the future of Codio and working towards that perfect IDE. But we need some additional help from an experienced front-end engineer who want to be part of something truly exciting.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In which we see all the issues that come with great version control.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;As one of our front-end engineers, you&amp;#39;ll be responsible for building arguably the most important part of Codio. The IDE itself is a single page app built using the latest Javascript, HTML5 and CSS3 technologies. We hate IE and love any browser which sits on the cutting edge of the web, so you will be encouraged to play with and implement the latest and greatest.&lt;/p&gt;
+&lt;p&gt;As &lt;a href="/s/blog/2013/06/moving-from-mercurial-to-git/"&gt;already mentioned in the last post&lt;/a&gt; we are using Mercurial right now but want to switch to Git. So the question in the room was how to convert a large Mercurial repository...&lt;/p&gt;</summary>
+    <content type="html">&lt;h2 id="toc_0"&gt;The Problem&lt;/h2&gt;
 
-&lt;p&gt;You are also our target market for the product itself, which makes it an extremely attractive and exciting product to work on. You&amp;#39;ve most likely heard this said before, but we really do have something that is built for developers, and by developers. We want you to be happy to use Codio as your day to day IDE, and if you aren&amp;#39;t, help us to get there.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In which we see all the issues that come with great version control.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;We want someone who is free thinking, passionate and has a love of what they do. If you find yourself still hacking away at 4am without realising the time, then you&amp;#39;re the kind of person we want.&lt;/p&gt;
+&lt;p&gt;As &lt;a href="/s/blog/2013/06/moving-from-mercurial-to-git/"&gt;already mentioned in the last post&lt;/a&gt; we are using Mercurial right now but want to switch to Git. So the question in the room was how to convert a large Mercurial repository to Git, without losing any history and converting the named Mercurial branches to Git branches.&lt;/p&gt;
 
-&lt;h3 id="toc_0"&gt;What we want from you:&lt;/h3&gt;
+&lt;p&gt;There were a few tools that I tried, mainly &lt;a href="https://github.com/frej/fast-export"&gt;fast-export&lt;/a&gt; and &lt;a href="http://www.fogcreek.com/kiln/"&gt;Kiln&lt;/a&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;3+ years professional experience.&lt;/li&gt;
-&lt;li&gt;Experience and knowledge of Javascript (including jQuery), HTML5 and CSS3.&lt;/li&gt;
-&lt;li&gt;Recognition of the benefits of test driven development and well tested code.&lt;/li&gt;
-&lt;li&gt;Knowledge of the browser market and its changing pace.&lt;/li&gt;
-&lt;li&gt;An eye for detail, both in your code and in the browser. Developers can be a picky bunch you know ;)&lt;/li&gt;
-&lt;li&gt;Common sense when it comes to UI and UX.&lt;/li&gt;
-&lt;li&gt;Work well in a team and on your own.&lt;/li&gt;
-&lt;li&gt;A love of open source software.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;The first one was fast-export and the main problem was that after I got it installed it always crashed with some cryptic errors. Some of them could be resolved as explained in this &lt;a href="http://www.mehdi-khalili.com/migrating-from-mercurial-to-git"&gt;post&lt;/a&gt;. But even then after fixing these there were more errors, so I eventually gave up.&lt;/p&gt;
 
-&lt;h3 id="toc_1"&gt;You&amp;#39;ll be at an advantage if you also:&lt;/h3&gt;
+&lt;p&gt;The next one was &lt;a href="http://www.fogcreek.com/kiln/"&gt;Kiln&lt;/a&gt;, a service that claims to allow you to work on a single repository using Git &lt;em&gt;and&lt;/em&gt; Mercurial. After setting up an account and waiting forty minutes to push from the command line, I was excited to see what happened, but was pretty bummed to see that the repo was completely empty in the web interface. After the command line, I tried their importer, which took about the same amount of time again only to give me just a partial history in the web interface. After this I was quite fed up with Kiln and moved on.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Have an eye for good design, and experience with Photoshop.&lt;/li&gt;
-&lt;li&gt;Enjoy writing, blogging and speaking at tech conferences.&lt;/li&gt;
-&lt;li&gt;Have experience with Java.&lt;/li&gt;
-&lt;li&gt;Contribute or have created any open source software (big brownie points for this one).&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id="toc_1"&gt;The Meeting&lt;/h2&gt;
 
-&lt;p&gt;We&amp;#39;re a distributed team with our HQ in the UK, so you will be able to work from anywhere you please. We would prefer if you were UK or European based, but if you&amp;#39;re really good, we don&amp;#39;t care where you are.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;In which we meet a creature much more powerful than we had ever imagined.&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id="toc_2"&gt;To Apply&lt;/h3&gt;
+&lt;p&gt;I was about to give up my search when I found &lt;a href="https://github.com/buchuki/gitifyhg"&gt;Gitifyhg&lt;/a&gt;. &lt;a href="https://github.com/buchuki/gitifyhg"&gt;Gitifyhg&lt;/a&gt; is not intended as a way of converting Mercurial repositories to Git, but rather to give people who have to work on those, an easy way&lt;br&gt;
+to interact with them using Git.&lt;/p&gt;
 
-&lt;p&gt;Drop us an email at &lt;a href="mailto:work@codio.com"&gt;work@codio.com&lt;/a&gt; telling us why we should hire you, along with your resume/CV if you have one. Although we&amp;#39;d be much more interested in your Github profile, which speaks volumes about you and what you are capable of.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This git remote allows you to do local development in a git repository and push changes to an upstream mercurial repository. It does this seamlessly and allows pushing and pulling to named branches in the upstream repository.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;If you have any questions, please let me know in the blog comments.&lt;/p&gt;
+&lt;p&gt;But because it needs to be able to do much more, e.g. converting back and forth from Mercurial to Git, it is able to do exactly what we need: convert a complete Mercurial repository into a Git repository without losing any history or a single branch.&lt;/p&gt;
+
+&lt;h2 id="toc_2"&gt;The Great Conversion&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;In which Mercurial branches become Git branches.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id="toc_3"&gt;The Installation&lt;/h3&gt;
+
+&lt;p&gt;As we&amp;#39;re already using Mercurial, Python is set up and hopefully &lt;code&gt;pip&lt;/code&gt; or &lt;code&gt;easy_install&lt;/code&gt;. If this is the case then installation is as simple as typing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pip install gitifyhg
+# or
+$ easy_install gitifyhg
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For more information on installation procedures check out the &lt;a href="https://github.com/buchuki/gitifyhg#install"&gt;readme&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id="toc_4"&gt;The Ceremony&lt;/h3&gt;
+
+&lt;p&gt;Now that gitifyhg is installed we can harness its powers by simply cloning a Mercurial repository with this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone gitifyhg::&amp;lt;mercurial repository&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One thing to note here, is that the easiest way - for conversion at least - is to clone a local repository instead of one that is on a server. The main issue here is that I couldn&amp;#39;t figure out how to sign in to &lt;a href="https://bitbucket.org/"&gt;Bitbucket&lt;/a&gt; using this approach.&lt;/p&gt;
+
+&lt;p&gt;When this command has finished running the conversion is finished. What we now need to do is set up remote tracking branches for all our git branches so we can check them out. This is easy enough for a single branch by doing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git --track &amp;lt;name of the remote branch&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But if you have many branches and want to add them all at once we can use the power of the shell to do it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ for remote in `git branch -r `; do git branch --track $remote; done
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can now take a look at all our Mercurial branches in Git:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git branch -r
+  origin/HEAD -&amp;gt; origin/master
+  origin/branches/#7345_tabs_reopening
+  origin/branches/#7528_context-no-longer-needed
+  origin/branches/#7610_md5_cache
+  origin/branches/#7633_file_tree_icons
+  origin/branches/#7663_deployment_UI
+  origin/branches/#7777_sharejs
+  origin/branches/#7797_first_app_selection
+  origin/branches/#7800_ace_themes
+  origin/branches/#7897_annotations_menuitem_visibility
+  origin/branches/#7973_preview_hotkeys
+  origin/branches/#7981_tour_closing
+  origin/branches/#8011_inline_preview
+  origin/branches/#8013_shortcuts
+  origin/branches/#8062_error_on_init_during_close
+  origin/branches/#8128_css_color_preview
+  origin/branches/#8130_emmet_hotkeys
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="toc_5"&gt;The Cleaning&lt;/h3&gt;
+
+&lt;p&gt;Gitifyhg uses the convention &lt;code&gt;master = default&lt;/code&gt; for the main branch and &lt;code&gt;&amp;lt;git branch name&amp;gt; = branches/&amp;lt;mercurial branch name&amp;gt;&lt;/code&gt; for all other branches. We don&amp;#39;t want this. Instead we want to rename our local branches so that the prefix &lt;code&gt;branches/&lt;/code&gt; is removed. This is easily done by doing:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git branch -m &amp;lt;old name&amp;gt; &amp;lt;new name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So we can rename those branches that we want to keep around and remove those that are not needed anymore by calling:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git branch -D &amp;lt;branch name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_6"&gt;The Epilogue&lt;/h2&gt;
+
+&lt;p&gt;Now that we&amp;#39;ve converted the repository itself, the real work begins. We need to change our development cycle around version control and educate everyone about how to use Git in a safe and productive way. Even if these two are similar there is still a lot to learn and the raw power of Git can sometimes be a little bit scary, but personally I much prefer having all the power rather than jumping through hoops all the time.&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>Collaboration in Coding</title>
-    <link rel="alternate" href="https://codio.com/s/blog/2013/03/collaboration-in-coding/"/>
-    <id>https://codio.com/s/blog/2013/03/collaboration-in-coding/</id>
-    <published>2013-03-15T00:00:00Z</published>
-    <updated>2013-03-15T00:00:00Z</updated>
+    <title>Real Time Coding</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/06/real-time-coding/"/>
+    <id>https://codio.com/s/blog/2013/06/real-time-coding/</id>
+    <published>2013-06-07T00:00:00Z</published>
+    <updated>2013-06-07T00:00:00Z</updated>
     <author>
       <name>Joel Moss</name>
     </author>
-    <summary type="html">&lt;p&gt;As you should already know by now, we &lt;a href="/s/blog/2013/03/codio-is-live-and-kicking/"&gt;launched&lt;/a&gt; Codio into public beta yesterday. It's an all new cloud based IDE, and it will be the very first cloud based IDE that every developer will love to use, day in and day out.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;We have a big new feature for your enjoyment that we rolled out just yesterday. I'm excited to introduce Real Time Coding!&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;“We live not in a passive society...&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    <content type="html">&lt;p&gt;As you should already know by now, we &lt;a href="/s/blog/2013/03/codio-is-live-and-kicking/"&gt;launched&lt;/a&gt; Codio into public beta yesterday. It&amp;#39;s an all new cloud based IDE, and it will be the very first cloud based IDE that every developer will love to use, day in and day out.&lt;/p&gt;
+&lt;p&gt;Right from the start, we wanted Codio to be collaborative. We are after all, working in the browser, which is the perfect place...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;We have a big new feature for your enjoyment that we rolled out just yesterday. I&amp;#39;m excited to introduce Real Time Coding!&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;“We live not in a passive society, a read-only society, but in a writable society.”&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Right from the start, we wanted Codio to be collaborative. We are after all, working in the browser, which is the perfect place to collaborate. So yesterday we flicked the switch on our first big collaborative feature.&lt;/p&gt;
 
-&lt;p&gt;Collaboration is the very first thing we thought about when we first sat down to plan Codio, and has continued to be at the very heart of almost everything we are building since.&lt;/p&gt;
+&lt;p&gt;Real Time Coding is exactly as it sounds. You and your friends and colleagues can hack away on your code. But when any of your friends or colleagues makes a change in the code, you see it happening right there in real time. You see exactly what they type, as they type it.&lt;/p&gt;
 
-&lt;p&gt;Collaboration is arguably the single biggest advantage when using software in the browser, because the browser is constantly connected via the internet, and because the browser is now the most used application on almost any device. Collaboration is also hugely important when writing software and especially when building for the web. It empowers us to do more, while remaining in the [virtual] company of our friends and colleague&amp;#39;s.&lt;/p&gt;
+&lt;p&gt;It&amp;#39;s like Google Docs, but right in your code editor!&lt;/p&gt;
 
-&lt;p&gt;The cost of collaborating between you and others when using the browser and the internet are zero. Email, Twitter, Skype - these are all free to use, and they are all about collaboration.&lt;/p&gt;
+&lt;p&gt;Real Time Coding is available right now for everyone, and for all projects.&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;&amp;quot;It is the long history of humankind (and animal kind, too) those who learned to collaborate and improvise most effectively have prevailed.&amp;quot; - Charles Darwin&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Ah, but now I hear a few of you asking the question &amp;quot;&lt;strong&gt;what if I don&amp;#39;t have anyone to collaborate with?&lt;/strong&gt;&amp;quot;. The answer to that is easy and simple... &lt;strong&gt;you do!&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The world is full of like-minded people just like you. People who love building web apps, designing web sites, or creating mobile applications. And they all have something to share, even you! And whether you realise it or not, you co-ordinate and collaborate every single day, with people you have never met or spoken to before. No matter what accomplishments you make, odds are somebody helped you along the way.&lt;/p&gt;
-
-&lt;p&gt;The largest sites are essentially all about encouraging collaboration and making it easier for us to co-ordinate with each other. Sites and apps like Facebook, Twitter, Gmail, Wikipedia, Github, Basecamp, and now Codio are leading the way here.&lt;/p&gt;
-
-&lt;p&gt;Collaboration is &lt;em&gt;extremely&lt;/em&gt; powerful, and we think you&amp;#39;ll love what you can already do with Codio. If you &lt;a href="https://twitter.com/codiohq"&gt;follow us on Twitter&lt;/a&gt; we&amp;#39;ll let you know every time we increase our levels of collaboration within Codio, because we have loads more planned.&lt;/p&gt;
-
-&lt;p&gt;Over the next few posts, I will be detailing just how Codio can help improve collaboration for you and your team.&lt;/p&gt;
+&lt;p&gt;&lt;img src="/s/img/blog/real-time-coding-ee2a33ca.gif" /&gt;&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>Codio is Live and Kicking!</title>
-    <link rel="alternate" href="https://codio.com/s/blog/2013/03/codio-is-live-and-kicking/"/>
-    <id>https://codio.com/s/blog/2013/03/codio-is-live-and-kicking/</id>
-    <published>2013-03-13T00:00:00Z</published>
-    <updated>2013-03-13T00:00:00Z</updated>
+    <title>Moving from Mercurial to Git</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/06/moving-from-mercurial-to-git/"/>
+    <id>https://codio.com/s/blog/2013/06/moving-from-mercurial-to-git/</id>
+    <published>2013-06-06T00:00:00Z</published>
+    <updated>2013-06-06T00:00:00Z</updated>
     <author>
       <name>Joel Moss</name>
     </author>
-    <summary type="html">&lt;p&gt;We are extremely excited to announce the immediate availability of Codio in public beta. This means you can play with what will become the world's very first IDE that addresses all aspects of the HTML5 development life-cycle right now! We're building...&lt;/p&gt;</summary>
-    <content type="html">&lt;p&gt;We are extremely excited to announce the immediate availability of Codio in public beta. This means you can play with what will become the world&amp;#39;s very first IDE that addresses all aspects of the HTML5 development life-cycle right now! We&amp;#39;re building an IDE that any developer will want and enjoy using every single day, because there is currently no such thing.&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Since I began with Codio almost a year ago, I've wanted to move to Git - it's what I'm used to and I think it is simply superior to Mercurial. Right now we use Mercurial, and while it is very similar to Git in concept, there are some differences which...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Since I began with Codio almost a year ago, I&amp;#39;ve wanted to move to Git - it&amp;#39;s what I&amp;#39;m used to and I think it is simply superior to Mercurial. Right now we use Mercurial, and while it is very similar to Git in concept, there are some differences which are starting to hold us back a little. So I made an executive decision to migrate away from Mercurial to Git, and from BitBucket to Github.&lt;/p&gt;
 
-&lt;p&gt;But don&amp;#39;t take my word for it. &lt;strong&gt;Just click the &amp;quot;Create &amp;amp; Play!&amp;quot;&lt;/strong&gt; link at the top of the page to create your first Codio project.&lt;/p&gt;
+&lt;p&gt;This post will attempt to explain the high level differences between Mercurial and Git, and will also compare the commands and workflow of each. It will also explain a few best practises and tips when using Git. Hopefully by the end, you will understand why we&amp;#39;re moving.&lt;/p&gt;
 
-&lt;p&gt;&lt;img alt="Codio IDE" src="/s/img/blog/ide-68ac0fff.png" /&gt;&lt;/p&gt;
+&lt;h2 id="toc_0"&gt;What’s the Difference?&lt;/h2&gt;
 
-&lt;p&gt;It&amp;#39;s been a hard and arduous road, but we&amp;#39;re finally at the start of it. Yes I did say the start, and that&amp;#39;s because we have so much more to come. Building the perfect IDE is no small task you know, but what we&amp;#39;re releasing today is the foundation that will set up that which is to come.&lt;/p&gt;
+&lt;p&gt;Here’s a technical summary of the major differences between Mercurial and Git, taken from an answer to &lt;a href="http://stackoverflow.com/questions/1598759/git-and-mercurial-compare-and-contrast"&gt;this StackOverlow question&lt;/a&gt;:&lt;/p&gt;
 
-&lt;p&gt;Check out the press release and subscribe to this blog to stay informed...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Repository structure&lt;/strong&gt;: Mercurial doesn’t allow octopus merges (with more than two parents), nor tagging non-commit objects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tags&lt;/strong&gt;: Mercurial uses versioned &lt;code&gt;.hgtags&lt;/code&gt; file with special rules for per-repository tags, and has also support for local tags in &lt;code&gt;.hg/localtags&lt;/code&gt;; in Git, tags are refs residing in &lt;code&gt;refs/tags/namespace&lt;/code&gt;, and by default are auto-followed on fetching and require explicit pushing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branches&lt;/strong&gt;: In Mercurial basic workflow is based on anonymous heads; Git uses lightweight named branches, and has special kind of branches (remote-tracking branches) that follow branches in remote repository.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Revision naming and ranges&lt;/strong&gt;: Mercurial provides revision numbers, local to repository, and bases relative revisions (counting from tip, i.e. current branch) and revision ranges on this local numbering; Git provides a way to refer to revision relative to branch tip, and revision ranges are topological (based on graph of revisions).&lt;/li&gt;
+&lt;li&gt;Mercurial uses rename &lt;strong&gt;tracking&lt;/strong&gt;, while Git uses rename detection to deal with file renames&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network&lt;/strong&gt;: Mercurial supports SSH and HTTP “smart” protocols; modern Git supports SSH, HTTP and GIT “smart” protocols, and HTTP(S) “dumb” protocol. Both have support for bundles files for off-line transport.&lt;/li&gt;
+&lt;li&gt;Mercurial uses &lt;strong&gt;extensions&lt;/strong&gt; (plugins) and established API; Git has scriptability and established formats.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;Codio today announced its launch in public beta, giving developers of all skill levels access to a powerful, web-based visual IDE for HTML5+CSS+JS development. More than a typical code editor, Codio covers the complete web development cycle, from prototype to deployment. It offers novice developers a barrier free way to learn how to build web applications, but is also targeted very much at professional web developers.&lt;/p&gt;
+&lt;p&gt;Most of the differences between Mercurial and Git are very subtle, and most people wouldn’t even notice them, however, there’s a fundamental difference that I’ll tackle next.&lt;/p&gt;
 
-&lt;p&gt;“There is a lot of stuff to install, setup and configure before you can write a single line of code. We feel that  there is no good reason for this and even developers, who deal with complexity on a daily basis, don’t like to waste  time. Modern web applications have raised expectations significantly with respect to usability and a web based approach to web development opens up lots of exciting new possibilities. Ultimately, coding should be fun and a happy developer produces happy code!” says CEO Freddy May.&lt;/p&gt;
+&lt;h2 id="toc_1"&gt;Branches&lt;/h2&gt;
 
-&lt;p&gt;The evolution of the web has witnessed paradigm shifts in new web technologies. The demand and popularity of web app development has, consequently, secured HTML5, CSS and JavaScript its place among the most popular development  languages. As a large number of modern applications now run in browsers, these technologies have become an integral part of most software development projects.&lt;/p&gt;
+&lt;p&gt;The way Git deals with branches is incredibly simple, and yet very powerful.&lt;/p&gt;
 
-&lt;p&gt;“By concentrating specifically on HTML5, CSS and JavaScript we can focus on the largest part of the developer ecosystem. This allows us constantly to add significant value that would otherwise not be possible if we were to try to cater for all languages,” says May.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;hg branch != git branch&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;In the era of the cloud it is logical that web applications should not just run on the web, but also be built on the web. Codio offers developers an efficient, modern, and secure IDE whose code is accessible anywhere online via Codio workspaces and shareable with others in a similar way to Github.&lt;/p&gt;
+&lt;p&gt;In Git, a branch is merely one of the many kinds of ‘refs’, and a ‘ref’ is simply a pointer to a commit. This means that there’s nothing fundamentally different between ‘branch1’ or ‘branch2’ or even ‘master’. They&amp;#39;re all pointers to commits, and these pointers can be easily be deleted, renamed, fetched, pushed, etc. You can do pretty much whatever you want with them.&lt;/p&gt;
 
-&lt;p&gt;Codio makes getting started very simple by allowing developers to use it without even signing up. It offers a comfortable environment not just for code editing but also deployment, collaboration, Git and Mercurial integration, as well as support for derivative languages such as Coffeescript, SCSS, LESS all without the need to install, configure and maintain hardware and software stacks.&lt;/p&gt;
+&lt;p&gt;In Mercurial, a branch is embedded in a commit; a commit in ‘branch1’ will always remain in that branch. This means you cannot delete, or rename branches, because you would be changing the history of the commits on those branches. You can &amp;#39;close&amp;#39; branches however. These &amp;quot;named branches&amp;quot; can be better thought of as &amp;quot;commit labels&amp;quot;.&lt;/p&gt;
 
-&lt;p&gt;Codio also brings enhanced collaboration to developers. Traditionally, developers collaborate using web based code repositories such as Github and Bitbucket. Codio supports Source Control Management but also adds real time code editing by multiple developers rather like Google Docs. Text chat, voice chat and video are also planned for later this year.&lt;/p&gt;
+&lt;h2 id="toc_2"&gt;Git Commands&lt;/h2&gt;
 
-&lt;p&gt;Codio is being aggressively developed and many new features will be appearing on a continuous deployment basis. Some notable features on the horizon are:&lt;/p&gt;
+&lt;p&gt;Let&amp;#39;s go through and compare the most used commands.&lt;/p&gt;
 
-&lt;p&gt;Multi-pane code editing&lt;br&gt;
-Development, staging, production deployment targets&lt;br&gt;
-WYSIWYG GUI editor&lt;br&gt;
-Interactive code documentation for teaching&lt;br&gt;
-Instant preview&lt;br&gt;
-Version control&lt;br&gt;
-Node.js support&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;clone&lt;/strong&gt;, &lt;strong&gt;status&lt;/strong&gt;, &lt;strong&gt;diff&lt;/strong&gt;, &lt;strong&gt;add&lt;/strong&gt;, &lt;strong&gt;rm&lt;/strong&gt;, &lt;strong&gt;push&lt;/strong&gt; and &lt;strong&gt;pull&lt;/strong&gt; are functionally the same. In fact, most commands are very similar. However there are a few exceptions and things to note.&lt;/p&gt;
 
-&lt;p&gt;Codio is expected to come out of Public Beta in middle of 2013.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;General&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;commit&lt;/td&gt;
+&lt;td&gt;Passing the &lt;code&gt;-a&lt;/code&gt; flag will automatically stage files that have been modified or deleted, so it is good practice to always use  this&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;add&lt;/td&gt;
+&lt;td&gt;Using the &lt;code&gt;-A&lt;/code&gt; flag adds, modifies, and index entries to match the working tree. Use this instead of &lt;code&gt;hg addremove&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;push&lt;/td&gt;
+&lt;td&gt;Git will try to figure out which branch you want to push and which remote to push to. But setting the following configuration, Git will push to the current branch, thus avoiding pushing all your branches, which Mercurial does: &lt;code&gt;git config --global push.default current&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;pull&lt;/td&gt;
+&lt;td&gt;Rebasing on pull is good practice and will make everyone’s lives easier. You should always pull with the &lt;code&gt;--rebase&lt;/code&gt; flag to avoid merge commits that result from pulling. Make it the default behaviour with: &lt;code&gt;git config --global --bool pull.rebase true&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;checkout&lt;/td&gt;
+&lt;td&gt;Use this to switch between branches instead of &lt;code&gt;hg up branch_name&lt;/code&gt;.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;table&gt;&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;strong&gt;Branching&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Creating&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git branch BRANCH-NAME&lt;/code&gt; will create a new branch, but &lt;code&gt;git checkout -b BRANCH-NAME&lt;/code&gt; will create and then switch to the new branch.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Switching&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git checkout BRANCH-NAME&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Deleting&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git branch -d BRANCH-NAME&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Listing&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;git branch&lt;/code&gt; will list all local branches. &lt;code&gt;git branch -a&lt;/code&gt; will list all branches including those on the remote.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h2 id="toc_3"&gt;Best Practices&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href="http://mislav.uniqpath.com/2013/02/merge-vs-rebase/"&gt;This great article&lt;/a&gt; by Mislav Marohnić can be summarised as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git pull --rebase&lt;/code&gt; instead of &lt;code&gt;git pull&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;git rebase -i @{u}&lt;/code&gt; before git push&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(on “feature”) &lt;code&gt;git merge master&lt;/code&gt; to make feature compatible with latest master&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(on “master”) &lt;code&gt;git merge -no-ff feature&lt;/code&gt; to ship a feature&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;However if “feature” contains only 1 commit, avoid the merge commit: (on “master”) &lt;code&gt;git cherry-pick feature&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Rebasing is a much debated subject in Git-land, but &lt;a href="http://blog.izs.me/post/37650663670/git-rebase"&gt;this article&lt;/a&gt; explains it very well.&lt;/p&gt;
+
+&lt;h2 id="toc_4"&gt;Tips&lt;/h2&gt;
+
+&lt;p&gt;The following are a collection of useful tips and tricks that I recommend that you implement. They will make your life so much easier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Branch name in your bash prompt&lt;/strong&gt;&lt;br&gt;
+This one is must-have for me, as I can always see at any time, what branch I am on. Check out these links: &lt;a href="http://code-worrier.com/blog/git-branch-in-bash-prompt/"&gt;http://code-worrier.com/blog/git-branch-in-bash-prompt/&lt;/a&gt; and &lt;br&gt;
+&lt;a href="https://github.com/magicmonty/bash-git-prompt"&gt;https://github.com/magicmonty/bash-git-prompt&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Setup Aliases&lt;/strong&gt;&lt;br&gt;
+Open up your ~/.gitconfig file and you should find an [alias] section. If not, just create one, using the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;[alias]
+  co = checkout
+  ci = commit
+  br = branch
+
+  # friendly statuses
+  st = status -sb
+
+  # Add all unstaged changes/removals and commit. All you gotta do here is pass the commit message.
+  # Example: git ac &amp;#39;My commit message&amp;#39;
+  ac = !git add -A &amp;amp;&amp;amp; git commit -m
+
+  # Pretty looking log
+  lg = log --decorate --stat --graph --pretty=format:&amp;#39;%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%n&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Love Stash&lt;/strong&gt;&lt;br&gt;
+There’s plenty of occasions when I’ve been in the middle of some changes, but have been interrupted by a need to work on something else - maybe an urgent bug, or to see something in a different branch. However, I have not yet finished what I am working on and do not want to commit it yet. &lt;code&gt;git stash&lt;/code&gt; to the rescue!&lt;/p&gt;
+
+&lt;p&gt;Just run &lt;code&gt;git stash&lt;/code&gt; and git will take your uncommitted changes, and set them aside in a safe place. You are then back to a clean working copy and can switch branches, and hack away on anything else your heart desires.&lt;/p&gt;
+
+&lt;p&gt;When you are ready to return back, simply run &lt;code&gt;git stash pop&lt;/code&gt; to apply your last stash and remove it from the stash.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Hub with Github&lt;/strong&gt;&lt;br&gt;
+We will be using Github, so &lt;a href="http://defunkt.io/hub/"&gt;hub&lt;/a&gt; is extremely helpful.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Looking at Pull Requests&lt;/strong&gt;&lt;br&gt;
+On Github you can download patch files and apply them to your project immediately to have a look at them, for example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://github.com/karma-runner/karma/pull/559.patch | git am
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This downloads the patch and pipes it into &lt;code&gt;git am&lt;/code&gt; which simply applies the patch to your working directory. And after you are finished you can simply do:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD~i
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;i&lt;/code&gt; is the number of commits you want to discard. A word of warning should be added here. Doing a hard reset will DELETE stuff permanently from your repo, so be sure you know what you are deleting.&lt;/p&gt;
+
+&lt;h2 id="toc_5"&gt;Other Resources&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Offical Git Page &lt;a href="http://git-scm.com/"&gt;http://git-scm.com/&lt;/a&gt; and &lt;a href="http://git-scm.com/book"&gt;http://git-scm.com/book&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://sandofsky.com/blog/git-workflow.html"&gt;https://sandofsky.com/blog/git-workflow.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://blog.izs.me/post/37650663670/git-rebase"&gt;http://blog.izs.me/post/37650663670/git-rebase&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://training.github.com/web/free-classes/"&gt;http://training.github.com/web/free-classes/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://help.github.com/"&gt;https://help.github.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Best Video Training: &lt;a href="https://peepcode.com/screencasts/git"&gt;https://peepcode.com/screencasts/git&lt;/a&gt; ( $12 each but worth every cent)&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Snippets Released</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/06/snippets/"/>
+    <id>https://codio.com/s/blog/2013/06/snippets/</id>
+    <published>2013-06-01T00:00:00Z</published>
+    <updated>2013-06-01T00:00:00Z</updated>
+    <author>
+      <name>Freddy May</name>
+    </author>
+    <summary type="html">&lt;p&gt;Hot on the heels of Inline Preview comes support for Textmate style Snippets.&lt;/p&gt;
+
+&lt;p&gt;Snippets are a great way of reducing typing by entering shorthand code, pressing the tab key and then seeing the shorthand expand into the longhand.&lt;/p&gt;
+
+&lt;p&gt;For example in an HTML...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;Hot on the heels of Inline Preview comes support for Textmate style Snippets.&lt;/p&gt;
+
+&lt;p&gt;Snippets are a great way of reducing typing by entering shorthand code, pressing the tab key and then seeing the shorthand expand into the longhand.&lt;/p&gt;
+
+&lt;p&gt;For example in an HTML file ...&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;iframe&lt;/code&gt; + tab, expands&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;iframe src=&amp;quot;&amp;quot; frameborder=&amp;quot;0&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In a CSS file ...&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bdi&lt;/code&gt; + tab, expands to &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-webkit-border-image: url();
+-moz-border-image: url();
+-o-border-image: url();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In a JS file ...&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;for&lt;/code&gt; + tab expands to &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for (var i = 0; i &amp;lt; Things.length; i++) {
+    Things[i]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;#39;ve made it very easy to review and search for snippets by including it right in the IDE.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="snippets" src="/s/img/blog/snippets-cd98b9aa.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Find out more by &lt;a href="/s/docs/ide/emmet/snippets/"&gt;reading the documentation&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Inline preview released</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/05/inline-preview/"/>
+    <id>https://codio.com/s/blog/2013/05/inline-preview/</id>
+    <published>2013-05-30T00:00:00Z</published>
+    <updated>2013-05-30T00:00:00Z</updated>
+    <author>
+      <name>Freddy May</name>
+    </author>
+    <summary type="html">&lt;p&gt;We've just deployed an inline preview capability. Just press Preview and a re-sizable panel will appear beneath your code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="inline preview demo" src="/s/img/blog/preview-demo-9be18d08.png"&gt;&lt;/p&gt;
+
+&lt;p&gt;You can expand it into its own browser tab with a click in the preview header.&lt;/p&gt;
+
+&lt;p&gt;Read more (well, not a lot more) in the &lt;a href="/s/docs/ide/ide-general/inline-preview/"&gt;documentation&lt;/a&gt;&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;We&amp;#39;ve just deployed an inline preview capability. Just press Preview and a re-sizable panel will appear beneath your code.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt="inline preview demo" src="/s/img/blog/preview-demo-9be18d08.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can expand it into its own browser tab with a click in the preview header.&lt;/p&gt;
+
+&lt;p&gt;Read more (well, not a lot more) in the &lt;a href="/s/docs/ide/ide-general/inline-preview/"&gt;documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is the latest, but by no means the last, feature to come off the production line. We&amp;#39;re going to be announcing three new ones in the next few days, so keep your eyes peeled.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Emmet support added for hi-speed HTML and CSS coding</title>
+    <link rel="alternate" href="https://codio.com/s/blog/2013/05/emmet-support/"/>
+    <id>https://codio.com/s/blog/2013/05/emmet-support/</id>
+    <published>2013-05-24T00:00:00Z</published>
+    <updated>2013-05-24T00:00:00Z</updated>
+    <author>
+      <name>Freddy May</name>
+    </author>
+    <summary type="html">&lt;p&gt;We have just added Emmet support for a whole range of features that really boost productivity when working with HTML and CSS. These features include expanding abbreviations into full HTML or CSS as well as some very powerful keyboard shortcuts.&lt;/p&gt;
+
+&lt;p&gt;Be...&lt;/p&gt;</summary>
+    <content type="html">&lt;p&gt;We have just added Emmet support for a whole range of features that really boost productivity when working with HTML and CSS. These features include expanding abbreviations into full HTML or CSS as well as some very powerful keyboard shortcuts.&lt;/p&gt;
+
+&lt;p&gt;Be sure to check out the &lt;a href="/s/docs/ide/emmet/"&gt;Codio documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#39;s a short video of it in action in the Codio IDE.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://www.youtube.com/v/suFLTxYDJz8?autoplay=1" class="fancybox fancybox.iframe" id="video"&gt;&lt;br&gt;
+    &lt;img src="//i3.ytimg.com/vi/suFLTxYDJz8/mqdefault.jpg"&gt;&lt;br&gt;
+  &lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="toc_0"&gt;Basic Example&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;#39;s say you want to generate the following HTML&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt;
+    &amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just type the following and press tab&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;div&amp;gt;ul&amp;gt;li*3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_1"&gt;Juicier Example&lt;/h2&gt;
+
+&lt;p&gt;This is more involved but shows how you can generate pretty well anything once you understand its simple language.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div id=&amp;quot;page&amp;quot;&amp;gt;
+    &amp;lt;div class=&amp;quot;logo&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;ul id=&amp;quot;navigation&amp;quot;&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Item 1&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Item 2&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Item 3&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Item 4&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;&amp;quot;&amp;gt;Item 5&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And here is what you enter (then press tab)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#page&amp;gt;div.logo+ul#navigation&amp;gt;li*5&amp;gt;a{Item $}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_2"&gt;CSS Example&lt;/h2&gt;
+
+&lt;p&gt;There&amp;#39;s CSS support, too.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;w100p&lt;/code&gt; results in &lt;code&gt;width: 100%&lt;/code&gt;&lt;br&gt;
+&lt;code&gt;m10p30e5x&lt;/code&gt; results in &lt;code&gt;margin: 10% 30em 5ex&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and how about this for gradients&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lg(left, #fc0, 30%, red)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;result in&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#fc0), color-stop(0.5, 30%), to(red));
+background-image: -webkit-linear-gradient(left, #fc0, 30%, red);
+background-image: -moz-linear-gradient(left, #fc0, 30%, red);
+background-image: -o-linear-gradient(left, #fc0, 30%, red);
+background-image: linear-gradient(left, #fc0, 30%, red);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_3"&gt;Lorem Ipsum&lt;/h2&gt;
+
+&lt;p&gt;There are other things you can do as well, like generating standard text&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis expedita numquam suscipit hic molestias tenetur neque facilis et aliquam consectetur sapiente aperiam non recusandae ad minima quod saepe laborum tempora.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just use &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;lorem
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="toc_4"&gt;Power Keyboard Shortcuts&lt;/h2&gt;
+
+&lt;p&gt;As well as abbreviations, we also offer some really powerful productivity features behind kayboard shortcuts. &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Matching tag pairs&lt;/li&gt;
+&lt;li&gt;Jump to matching tag&lt;/li&gt;
+&lt;li&gt;Wrap HTML with anotehr abbreviation&lt;/li&gt;
+&lt;li&gt;Traverse between important editing points&lt;/li&gt;
+&lt;li&gt;Selects important editing blocks and then traverses to the next one&lt;/li&gt;
+&lt;li&gt;Add remove comment toggle for the current line or block&lt;/li&gt;
+&lt;li&gt;Remove the current tag and its closing tag and adjust indentation&lt;/li&gt;
+&lt;li&gt;Merge selected lines into a single line&lt;/li&gt;
+&lt;li&gt;Add width and height properties to an img tag&lt;/li&gt;
+&lt;li&gt;Inline calculator that lets you enter arithmetic formulae and then press tab to perform the calculation&lt;/li&gt;
+&lt;li&gt;Increment and decrement CSS values by 0.1, 1 and 10&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Check out the &lt;a href="/s/docs/ide/emmet/"&gt;Codio documentation&lt;/a&gt; for an overview.&lt;/p&gt;
 </content>
   </entry>
 </feed>

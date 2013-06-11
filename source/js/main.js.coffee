@@ -5,7 +5,7 @@ exports = this
 
 
 $ ->
-  $(':not(.nofade) > a').hover(
+  $(":not('.nofade') > a").hover(
     ->
       $(this).animate opacity: 0.6, 200
     ->
@@ -15,13 +15,11 @@ $ ->
 
 # Home page feature lists
 $ ->
-  navBannerClick = (e)->
-    e && e.preventDefault()
-
+  navBannerClick = ->
     $this = $(this)
     type = $this.attr('href').slice(1)
 
-    $('.switched-lists .container > ul:visible').fadeOut ->
+    $('.switched-lists .container > *:visible').fadeOut ->
       do $("##{type}").fadeIn
 
     links.parent().removeClass 'active'
@@ -36,22 +34,50 @@ $ ->
   (links = $('#nav-banner a')).on 'click', navBannerClick
 
 
+  if location.hash and $('#nav-banner').length > 0
+    navBannerClick.call $("#nav-banner [href=#{location.hash}]")[0]
+
+
+  # Handle the "example" click in the highlighted features section
+  $('#highlighted-feature a[href="/#examples"]').on 'click', ->
+    if goto = $('#nav-banner [href=#examples]')
+      navBannerClick.call $('#nav-banner [href=#examples]')[0]
+
+  # Handle the "example" click in the tryit section
+  $('#tryit a[href="/#examples"]').on 'click', ->
+    if goto = $('#nav-banner [href=#examples]')
+      navBannerClick.call $('#nav-banner [href=#examples]')[0]
+
   # Handle the "features" click in main navigation
-  $('#navigation a[href="/#features"]').on 'click', (e)->
-    if goto = $('#nav-banner [href=#current-features]')
-      navBannerClick.call $('#nav-banner [href=#current-features]')[0]
+  $('#navigation a[href="/#features"]').on 'click', ->
+    if goto = $('#nav-banner [href=#features]')
+      navBannerClick.call $('#nav-banner [href=#features]')[0]
+
+  # Handle the "Roadmap" click in main navigation
+  $('#navigation a[href="/#roadmap"], #roadmaplink').on 'click', ->
+    if goto = $('#nav-banner [href=#roadmap]')
+      navBannerClick.call $('#nav-banner [href=#roadmap]')[0]
 
 
-  # Try it link
-  $('#navigation a:first').on 'click', (e)->
-    if goto = $('#tryit')
-      pusher = $('#ac-sitebar-pusher')
-      pushHeight = if pusher.length > 0 then pusher.height() else 0
-      $(document.body).animate({
-        scrollTop: goto.offset().top - pushHeight
-      }, 1000)
-      false
+  # Handle feature groups
+  $('#feature-tabs a').on 'click', (e)->
+    e.preventDefault()
+    $this = $(this)
 
+    $('#feature-groups section.active').transition
+      x: 1000
+      opacity: 0
+      ->
+        $(this).removeClass 'active'
+        $($this.attr('href')).transition
+          x: 0
+          opacity: 1
+          ->
+            $(this).addClass 'active'
+
+    parent = $this.parent()
+    parent.parent().find('li').removeClass 'active'
+    parent.addClass 'active'
 
 
 # Handles the hidden submenu.
@@ -72,9 +98,20 @@ $ ->
       this.title = $(this.element).find('img').attr('title')
 
 
-# Homepage Slideshow.
 $ ->
-  $('body.home header > .carousel').carousel()
+
+  if (aside = $('body.standard aside')).length > 0
+
+    # Floating submenu
+    top = aside.offset().top - parseFloat(aside.css('marginTop').replace(/auto/, 0))
+    $(window).scroll (event)->
+      # whether that's below the form
+      if $(this).scrollTop() >= top
+        # if so, ad the fixed class
+        aside.addClass('fixed')
+      else
+        # otherwise remove it
+        aside.removeClass('fixed')
 
 
 # Blog
@@ -82,13 +119,17 @@ $ ->
 
   # Handle blog images
   if (images = $('body.blog section.posts article img')).length > 0
-    images.wrap -> "<a href='#{$(this).attr('src')}' class='fancybox' />"
-
-  if (images = $("body.blog section.posts article img[align='left']")).length > 0
-    images.css 'margin', '20px 25px 15px 0'
+    images.each ->
+      self = $(this)
+      unless self.parent().is('a')
+        self.wrap -> "<a href='#{self.attr('src')}' class='fancybox' />"
 
   # Set syntax highlighting language to javascript by default.
   $('body.blog section.posts article pre > code').addClass 'lang-javascript'
+
+  # Handle video links so they open in fancybox
+  if (videos = $("body.blog section.posts article a[href*='youtube']")).length > 0
+    videos.addClass 'fancybox fancybox.iframe'
 
 
 

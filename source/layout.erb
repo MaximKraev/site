@@ -2,16 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
-    <title><%= current_page.data.title %> - Codio</title>
+    <title>
+      <% if current_page.data.subtitle %>
+        <%= current_page.data.title %>: <%= current_page.data.subtitle %>
+      <% else %>
+        <%= current_page.data.title %>
+      <% end %>
+       - Codio
+    </title>
 
     <% if content_for?(:meta_description) %>
       <meta name="description" content="<%= yield_content :meta_description %>">
     <% elsif current_page.data.meta_description %>
       <meta name="description" content="<%= current_page.data.meta_description %>">
     <% else %>
-      <meta name="description" content="Codio is a powerful cloud-based visual front-end IDE that covers the complete web development cycle; from prototype to deployment">
+      <meta name="description" content="Codio is a powerful cloud and browser based IDE that covers the complete web development cycle; from prototype to deployment">
     <% end %>
 
     <% if content_for?(:meta_keywords) %>
@@ -33,14 +38,14 @@
     <%= stylesheet_link_tag 'normalize', 'boilerplate' %>
 
     <% if !current_page.app.development? %>
-      <link href="/plugins/sitebar-min.css" media="screen" rel="stylesheet" type="text/css" />
+      <link href="/sitebar.css" media="screen" rel="stylesheet" type="text/css" />
     <% end %>
 
     <%= yield_content :head %>
 
     <link href="https://codio.com/s/blog/feed.xml" rel="alternate" title="Gettin' Crafty - A Blog written by the team at Codio - the perfect IDE people" type="application/atom+xml"/>
   </head>
-  <body class="<%= current_page.data.class_name || 'standard' %>">
+  <body class="<%= current_page.data.class_name || 'standard' %>" data-spy="scroll" data-target="aside">
     <a id="top"></a>
 
     <div class="wrap">
@@ -49,7 +54,7 @@
         <div class="container">
 
           <div id="blog-ribbon" class="nofade">
-            <%= link_to 'Blog', '/blog', :title => "Check out our Blog", :data => { :"no-turbolink" => true } %>
+            <%= link_to image_tag('blog-ribbon.png'), '/blog', :title => "Check out our Blog", :data => { :"no-turbolink" => true } %>
           </div>
 
           <div id="hiring" class="nofade">
@@ -66,16 +71,46 @@
             </ul>
 
             <ul id="navigation">
-              <li><a href="/#tryit" data-no-turbolink>Try it!</a></li>
-              <li><a href="/#features" data-no-turbolink>Features</a></li>
+              <li><%= link_to 'Education', '/education', :data => { :"no-turbolink" => true } %></li>
+              <li><a data-no-turbolink="true" href="/#features">Features</a></li>
               <li><%= link_to 'Docs', '/docs', :data => { :"no-turbolink" => true } %></li>
+              <li><%= link_to 'About', '/about', :data => { :"no-turbolink" => true } %></li>
             </ul>
           </nav>
 
         </div>
       </nav>
 
-      <%= yield %>
+      <% if current_page.data.submenu %>
+        <% unless current_page.data.hide_title %>
+          <header>
+            <h1>
+              <%= current_page.data.title %>
+              <% if current_page.data.subtitle %>
+                <small><%= current_page.data.subtitle %></small>
+              <% end %>
+            </h1>
+          </header>
+        <% end %>
+
+        <div class="container clearfix">
+          <aside>
+            <ul id="submenu" class="nav">
+              <% current_page.data.submenu.each do |f| %>
+                <li class="<%= 'active' if f.active %>">
+                  <a href="<%= f.url %>"><%= f.text %></a>
+                </li>
+              <% end %>
+            </ul>
+          </aside>
+
+          <article>
+            <%= yield %>
+          </article>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
 
     </div>
 

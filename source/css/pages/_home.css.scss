@@ -1,4 +1,6 @@
 body.home {
+  @import '../partials/highlighted-feature';
+
   background-color: #F9FAF7;
 
   header {
@@ -11,7 +13,7 @@ body.home {
       #public-stamp {
         img {
           position: absolute;
-          margin: 355px 0px 0px 630px;
+          margin: 390px 0px 0px 630px;
         }
       }
 
@@ -31,7 +33,7 @@ body.home {
             > p {
               margin: 0;
               text-shadow: 0 0 100px #000;
-              font: 26px gotham_bookregular;
+              font: 30px gotham_bookregular;
 
               &:nth-child(1) {
                 line-height: 1.5em !important;
@@ -50,8 +52,11 @@ body.home {
 
             // "You'll love to use every day" + love heart
             > div {
-              font: 28px gotham_bookregular;
-              margin: 16px 0 0 55px;
+              font: 30px gotham_bookregular;
+              text-align: center;
+              width: 600px;
+              line-height: 1.1em !important;
+              margin: 16px 0 0 0px;
 
               p {
                 margin: 0;
@@ -99,21 +104,136 @@ body.home {
     }
   }
 
-  .wrap > #features {
-    padding-bottom: 70px;
+  .wrap > .switched-lists {
+    padding-bottom: 100px;
+    overflow: hidden;
+  }
+
+  #features {
+    @include clearfix;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    > div:first-child {
+      float: left;
+
+      // Left side intro and tabs
+      &:first-child {
+        width: 200px;
+        margin: 20px 20px 0 0;
+
+        // Tabs
+        ul {
+          list-style: none;
+          padding: 0;
+          border-right: 1px solid #ddd;
+
+          li {
+            margin: 4px 0 4px 6px;
+
+            a {
+              display: block;
+              padding: 8px 16px 8px 14px;
+              text-transform: uppercase;
+              font-size: 16px;
+              text-align: right;
+              font-family: gotham_mediumregular;
+            }
+
+            &.active a {
+              border: 1px solid #ddd;
+              @include border-radius(8px 0 0 8px);
+              border-color: #ddd #F9FAF7 #ddd #ddd;
+              left: 1px;
+              position: relative;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+
+    // Right side feature list
+    #feature-groups {
+      width: 720px;
+      height: 500px;
+      margin: 15px 0 0 20px;
+      float: left;
+      position: relative;
+      overflow: visible;
+
+      #features-education h5 {
+        font-size: 16px;
+        font-weight: normal;
+      }
+
+      section {
+        position: absolute;
+        top: 0;
+        display: block;
+        z-index: 1;
+        width: 720px;
+        @include translate(1000px, 0);
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+        opacity: 0;
+
+        &.active {
+          @include translate(0, 0);
+          position: relative;
+          z-index: 2;
+          opacity: 1;
+        }
+
+        > ul > li {
+          display: inline-block;
+          width: 212px;
+          vertical-align: top;
+          padding: 0 36px 15px 0;
+
+          &:last-child {
+            padding-right: 0;
+          }
+
+          h4 {
+            font-family: gotham_bookregular;
+            font-size: 18px;
+            margin: 10px 0 0;
+            color: #222;
+
+            i {
+              margin-top: 4px;
+              color: darken($red, 25%);
+            }
+          }
+
+          p {
+            font-size: 13px;
+            color: #777;
+          }
+        }
+      }
+    }
   }
 
   #benefits {
     display: block;
-  }
+    font-style: normal;
 
-  #benefits {
     > li:first-child {
       width: 980px;
 
       li {
         float: left;
         vertical-align: top;
+        font-style: normal;
 
         &:first-child {
           width: 200px;
@@ -179,11 +299,12 @@ body.home {
   }
 
   #tryit {
-    padding: 40px 0 60px;
+    padding: 60px 0;
+    height: 640px;
     background: #F9FAF7 image-url('graphbg.gif') repeat;
 
     h3 {
-      margin-top: 0;
+      margin: 0;
       font: 20px gotham_mediumregular;
 
       i {
@@ -198,9 +319,20 @@ body.home {
       }
     }
 
+    p {
+      margin: 14px 0 26px;
+      font-size: 14px;
+    }
+
     iframe {
       border: 1px solid #bbb;
       box-shadow: 0 0 40px #bbb;
+    }
+
+    #pricing {
+      position: relative;
+      top: 32px;
+      left: 40%;
     }
   }
 
